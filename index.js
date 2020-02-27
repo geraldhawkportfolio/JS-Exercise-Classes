@@ -41,7 +41,24 @@ class Airplane {
 */
 
 class Person {
-
+constructor(attributes){
+  this.name = attributes.name;
+  this.age = attributes.age;
+  stomach = [];
+  }
+  eat(){
+    if(this.stomach.length >= 10){
+      // do nothing ...
+  }else{
+      this.stomach.push(somefood);
+      }
+  }
+  poop(){
+      this.stomach = [];
+  }
+  to_String(){
+      return `${this.name}, ${this.age}`;
+  }
 }
 
 /*
@@ -59,7 +76,23 @@ class Person {
 */
 
 class Car {
+  constructor(attributes){
+    this.model = attributes.model;
+    this.milesPerGallon = attributes.milesPerGallon;
+    tank: 0,
+    odometer: 0
+  }
+  fill(){
+    this.tank = this.tank + gallons;
+  }
+  drive(){
+    this.odometer = this.odometer++;
+  this.tank = this.tank - this.milesPerGallon;
 
+  if (this.tank <= 0){
+    return `I ran out of fuel at ${this.odometer} miles!`;
+      }
+  }
 }
 
 /*
@@ -75,7 +108,14 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-
+ constructor(attributes){
+    this.name = attributes.name;
+    this.age = attributes.age;
+    this.location = attributes.location;
+  }
+  speak(){
+      return `Hello my name is ${this.name}, I am from ${this.location}`;
+    }
 }
 
 /*
@@ -92,8 +132,20 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
-
+class Instructor extends Lambdasian{
+  super(attributes);
+  constructor(attributes){
+    this.specs = [];
+    this.specialty = attributes.specs[specialty];
+    this.favLanguage = attributes.specs[favLanguage];
+    this.catchPhrase = attributes.specs[catchPhrase];
+  }
+  demo(subject){
+      return `Today we are learning about ${subject}`;
+  }
+  grade(student, subject){
+    return `${student.name} receives a perfect score on ${subject}`;
+  }
 }
 
 /*
@@ -111,8 +163,32 @@ class Instructor {
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
+class Student extends Lambdasian {
+  super(attributes);
+    constructor(attributes){
+    this.specs = [];
+    this.previousBackground = attributes.specs[previousBackground];
+    this.className = attributes.specs[className];
+    this.favSubjects = attributes.specs[favSubjects];
+    }
+    listSubjects(specs){
+      let subString = 'Loving ';
+      let favCourses = [];
 
+        for(let i =0; i < specs.length; i++){
+          if(specs[i].favSubjects){
+              favCourses.push(specs[i].favSubjects);
+          }
+        }
+        const returnedString = subString + favCourses.stringify;
+        return returnedString;
+    }
+    PRAssignment(subject){
+        return `student.name has submitted a PR for ${subject}`;
+    }
+    sprintChallenge(subject){
+        return `student.name has begun sprint challenge on ${subject}`;
+    }
 }
 
 /*
@@ -128,8 +204,19 @@ class Student {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-
+class ProjectManager extends Instructor{
+  super(attributes);
+  constructor(attributes){
+    this.specs = [];
+    this.gradClassName = attributes.specs[gradClassName];
+    this.favInstructor = attributes.specs[favInstructor];
+  }
+  standup(channel){
+      return `${this.name} announces to ${channel}, @channel standy times!`
+    }
+  debugsCode(student, subject){
+      return `${this.name} debugs ${student.name}'s code on ${subject}`;
+    }
 }
 
 /*
